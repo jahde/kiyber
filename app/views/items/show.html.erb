@@ -4,6 +4,8 @@
 
 <p class="date">
   Submitted <%= time_ago_in_words(@item.created_at) %> Ago
+  | <%= link_to 'Edit', edit_item_path(@item) %> |
+    <%= link_to 'Delete', item_path(@item), method: :delete, data: { confirm: 'Are you sure?'} %>
 </p>
 
 <p class="body">
