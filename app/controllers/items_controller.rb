@@ -17,6 +17,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    if @item.update(params[:item].permit(:title, :body))
+      redirect_to @item
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end
