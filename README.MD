@@ -1,5 +1,7 @@
 == README
 
+Kiyber: 2 sided marketplace for the islands. Here is the setup
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
