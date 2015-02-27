@@ -1,9 +1,12 @@
 Kiyber::Application.routes.draw do
+  devise_for :users
+
   resources :items
 
   resources :services
 
   get '/about', to: 'pages#about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
