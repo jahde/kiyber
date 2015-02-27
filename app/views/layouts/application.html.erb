@@ -7,8 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="sidebar">
+    <div id="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.svg" %>
+        <% end %>
+    </div>
 
-<%= yield %>
+    <ul>
+      <li class="category">Website</li>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+    </ul>
+
+    <ul>
+      <li><a href="https://facebook.com/kiyber">Facebook</a></li>
+      <li><a href="https://twitter.com/kiyber">Twitter</a></li>
+      <li><a href="mailto:info@kiyber.com">Email</a></li>
+    </ul>
+  </div>
+
+  <div id="main_content">
+    <div id="header">
+    <% if current_page?(root_path) %>
+      <p>All Items</p>
+      <div class="buttons">
+      <button class="button"><%= link_to "New Item", new_item_path %></button>
+        <button class="button">Log Out</button>
+      </div>
+    <% elsif current_page?(about_path) %>
+      <p>About</p>
+    <% else %>
+      <%= link_to "Back to All Items", root_path %>
+    <% end %>
+    </div>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
