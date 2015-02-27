@@ -4,13 +4,17 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
     @item = Item.new(item_params)
 
-    @item.save
-    redirect_to @item
+    if @item.save
+      redirect_to @item
+    else
+      render 'new'
+    end
   end
 
   def show
