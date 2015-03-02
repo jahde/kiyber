@@ -2,6 +2,8 @@
   <%= @item.title %>
 </h1>
 
+<%= image_tag @item.photo.url %>
+
 <p class="date">
   Submitted <%= time_ago_in_words(@item.created_at) %> Ago
   <% if user_signed_in? %>

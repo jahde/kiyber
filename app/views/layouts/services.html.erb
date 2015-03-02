@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kiyber</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Home</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="sidebar">
+    <div id="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.svg" %>
+        <% end %>
+    </div>
+
+    <ul>
+      <li class="category">Website</li>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "About", about_path %></li>
+    </ul>
+
+    <ul>
+      <li><a href="https://facebook.com/kiyber">Facebook</a></li>
+      <li><a href="https://twitter.com/kiyber">Twitter</a></li>
+      <li><a href="mailto:info@kiyber.com">Email</a></li>
+
+    </ul>
+  </div>
+
+  <div id="main_content">
+    <div id="header">
+    <% if current_page?(items_path) %>
+      <p>All Items</p>
+      <% if user_signed_in? %>
+        <p>Test</p>
+        <div class="buttons">
+        <button class="button"><%= link_to "New Item", new_item_path %></button>
+          <button class="button">Log Out</button>
+        </div>
+      <% else %>
+        <p>Test</p>
+        <div class="buttons">
+        <button class="button"><%= link_to "Sign up", new_user_registration_path %></button>
+        </div>
+      <% end %>
+    <% elsif current_page?(about_path) %>
+      <p>About</p>
+    <% else %>
+      <%= link_to "Back to All Items", root_path %>
+    <% end %>
+    </div>
+
+    <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+
+    <%= yield %>
+  </div>
+
+</body>
+</html>

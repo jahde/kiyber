@@ -1,4 +1,11 @@
 Kiyber::Application.routes.draw do
+  devise_for :admins
+  resources :categories
+
+  get '/auth/:provider/callback' => 'authentications#create'
+
+  resources :authentications
+
   devise_for :users
 
   resources :items

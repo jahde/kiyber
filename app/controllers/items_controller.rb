@@ -8,24 +8,36 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+
+    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   def create
     @item = Item.new(item_params)
+    @categories = Category.all.map{|c| [c.name, c.id]}
 
-    if @item.save
-      redirect_to @item
-    else
-      render 'new'
-    end
+    @item.category_id = params[:category_id]
+      if @item.save
+        redirect_to @item
+      else
+        render 'new'
+      end
+
+    # if @item.save
+    #   redirect_to @item
+    # else
+    #   render 'new'
+    # end
   end
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   def update
     @item = Item.find(params[:id])
+    @item.category_id = params[:category_id]
 
     if @item.update(params[:item].permit(:title, :body))
       redirect_to @item

@@ -6,6 +6,19 @@ gem 'rails', '4.0.5'
 # Add devise
 gem 'devise', '~> 3.3.0'
 
+# Add omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'therubyracer'
+
+# Add paperclip
+gem "paperclip", "~> 4.2"
+
+# Add bootstrap
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootswatch-rails'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 

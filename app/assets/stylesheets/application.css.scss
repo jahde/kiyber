@@ -1,0 +1,26 @@
+@import "bootswatch/flatly/variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "bootswatch/flatly/bootswatch";
+
+#navcontainer ul li { display: inline; }
+
+#navcontainer {
+  margin-bottom: 0;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.item-list {
+  width: 900px;
+  margin: 0 auto;
+  margin-bottom: 63px;
+}
